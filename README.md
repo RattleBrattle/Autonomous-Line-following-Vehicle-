@@ -7,8 +7,11 @@ This project implements an autonomous line-following robot using an ATmega32A mi
 - **Line Following**: Uses TCRT5000 infrared sensors to detect and follow a line.
 - **Obstacle Detection**: Equipped with an HC-SR04 ultrasonic sensor to detect obstacles and avoid collisions.
 - **Servo Motor Control**: Utilizes an SG-90 servo motor to adjust the position of the ultrasonic sensor for a broader range of detection.
-- **Motor Control**: Controls DC motors using L293D motor driver ICs for precise movement and direction control.
-- **LCD Display**: Displays sensor readings and status information on an LCD screen.
+- **Motor Control**: Controls DC motors using 2x L293D motor driver ICs for precise movement and direction control.
+- **LCD Display**: Displays sensor readings, current direction, and status information (errors) on an LCD screen.
+
+#### Project Flowchart
+![](https://github.com/RattleBrattle/Autonomous-Line-following-Vehicle-/blob/main/Project%20flow%20charts/AUTOV_FLOWCHART_V1.0.png?raw=true)
 
 ### Hardware Components
 
