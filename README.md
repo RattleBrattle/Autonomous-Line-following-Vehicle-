@@ -77,7 +77,7 @@ This project implements an autonomous line-following robot using an ATmega32A mi
 
 1. **Hardware Setup**:
    - Connect the TCRT5000 sensors, HC-SR04 sensor, SG-90 servo motor, L293D motor driver ICs, and DC motors to the ATmega32A microcontroller as per the circuit diagram.
-!()[https://github.com/RattleBrattle/Autonomous-Line-following-Vehicle-/blob/main/Autonomous%20Vehicle%20-%20KiCad/PDF%20files/Schematic%20V1.0.png?raw=true]
+![](https://github.com/RattleBrattle/Autonomous-Line-following-Vehicle-/blob/main/Autonomous%20Vehicle%20-%20KiCad/PDF%20files/Schematic%20V1.0.png?raw=true)
 
 - A higher quality Schematic can be found inside the "PDF files" in the "KiCAD" schematic folder uploaded in the repository.
   
