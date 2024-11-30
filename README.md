@@ -13,6 +13,8 @@ This project implements an autonomous line-following robot using an ATmega32A mi
 #### Project Flowchart
 ![](https://github.com/RattleBrattle/Autonomous-Line-following-Vehicle-/blob/main/Project%20flow%20charts/AUTOV_FLOWCHART_V1.0.png?raw=true)
 
+- A higher detailed Flowchart PDF and image can be found in the "Project flow charts" file uploaded in the repository.
+
 ### Hardware Components
 
 - ATmega32A Microcontroller
@@ -21,8 +23,8 @@ This project implements an autonomous line-following robot using an ATmega32A mi
 - SG-90 Servo Motor
 - L293D Motor Driver ICs (2 units)
 - DC Motors (4 units)
-- LCD Display
-- Resistors, Capacitors, and other passive components
+- LCD Display (16x2)
+- Resistors, Capacitors, and other passive components 
 
 ### Software Components
 
@@ -44,29 +46,41 @@ This project implements an autonomous line-following robot using an ATmega32A mi
 1. **Initialization**: 
    - Initializes GPIO pins, ADC, Timers, USART, and sensors.
    - Sets up the servo motor and ultrasonic sensor for obstacle detection.
+   - Microcontroller controls the Motors and has 3 functions for them:
+     1) Steer vehicle right by turning on the 2 right motors.
+     2) Steer vehicle left by turning on the 2 left motors.
+     3) Move vehicle forward by turning on all motors.
+     4) Reverse vehicle backwards by reversing signals on all motors (not used in the project but the function is there and working).
 
 2. **Line Following**:
    - Continuously reads the analog and digital values from the TCRT5000 sensors.
    - Adjusts the motor speeds and directions to follow the detected line.
+   - Microcontroller constantly reads analog and digital values from the 3 TCRT sensors:
+     1) If the left sensor digital value is 1 and the right sensor digital value is zero, then the vehicle turns left.
+     2) If the right sensor digital value is 1 and the left sensor digital value is zero, then the vehicle turns right.
+     3) If the middle sensor digital value is 0, the vehicle moves forward.
 
 3. **Obstacle Detection and Avoidance**:
    - Uses the HC-SR04 sensor to measure distances to obstacles.
    - Adjusts the servo motor to scan the area.
-   - Stops or changes direction if an obstacle is detected within a certain range.
+   - Microcontroller sends the servo one of 3 functions:
+     1) Turn left (to scan the left direction of the ultrasonic sensor)
+     2) Turn right (to scan the right direction of the ultrasonic sensor)
+     3) Survey the area from left to right (scan surrounding area)
+   - Depending on the ultrasonic response, the MCU takes the appropriate action to avoid the obstacle in whichever direction.
 
 4. **LCD Display**:
-   - Displays the sensor readings and robot status on the LCD screen for monitoring.
+   - Displays the sensor readings and robot status on the LCD screen for monitoring. !!!(For debugging only)!!!
+   - Displays current direction the vehicle is going, Obstacles detected when ultrasonic distance is <30CM, and errors when they occur. 
 
 ### Usage
 
 1. **Hardware Setup**:
    - Connect the TCRT5000 sensors, HC-SR04 sensor, SG-90 servo motor, L293D motor driver ICs, and DC motors to the ATmega32A microcontroller as per the circuit diagram.
   
-    
-
 2. **Software Setup**:
-   - Clone the repository and open the project in your preferred IDE (e.g., Atmel Studio).
-   - Flash the firmware to the ATmega32A microcontroller.
+   - Clone the repository and open the project in your preferred IDE (e.g., Atmel Studio Microchip).
+   - Flash the firmware to the ATmega32A microcontroller (using Extreme Burner).
 
 3. **Operation**:
    - Place the robot on a surface with a line to follow.
