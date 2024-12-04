@@ -44,7 +44,11 @@ This project implements an autonomous line-following robot using an ATmega32A mi
 ### Proteus simulation circuit
 
   - **Simulation circuit**: In the folder uploaded to the repository named "Line-following robot", where I've created a circuit
-  to simulate what the project would look like in real life as close as possible using libraries provided by syedzainnasir over [at this link!](https://www.theengineeringprojects.com/2021/05/infrared-tracker-sensor-library-for-proteus.html) 
+  to simulate what the project would look like in real life as close as possible using libraries provided by syedzainnasir over [at this link!](https://www.theengineeringprojects.com/2021/05/infrared-tracker-sensor-library-for-proteus.html)
+
+  ![](https://github.com/RattleBrattle/Autonomous-Line-following-Vehicle-/blob/main/Line-following%20robot/Proteus%20schematic%20V1.1.png?raw=true)
+
+  - A higher quality image can be found inside the same folder mentioned above.
 
 ### Functionality
 
@@ -105,10 +109,11 @@ This project implements an autonomous line-following robot using an ATmega32A mi
 
 ### Contributing
 
-Tell me your thoughts and ideas on how to make this project even better or faster!.
-You can contact me by email at:
-baselmohamed802@gmail.com
-[or message me at LinkedIn!](www.linkedin.com/in/basel-sayed-b11534243)
+Tell me your thoughts and ideas on how to make this project even better or faster!
+
+You can contact me by email at: baselmohamed802@gmail.com.
+
+Or message me on my LinkedIn! www.linkedin.com/in/basel-sayed-b11534243
 
 ### License
 
