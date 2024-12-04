@@ -11,7 +11,7 @@ This project implements an autonomous line-following robot using an ATmega32A mi
 - **LCD Display**: Displays sensor readings, current direction, and status information (errors) on an LCD screen.
 
 #### Project Flowchart
-![](https://github.com/RattleBrattle/Autonomous-Line-following-Vehicle-/blob/main/Project%20flow%20charts/AUTOV_FLOWCHART_V1.0.png?raw=true)
+![](https://github.com/RattleBrattle/Autonomous-Line-following-Vehicle-/blob/main/Project%20flow%20charts/Flowchart%20Final%20(2).png?raw=true)
 
 - A higher detailed Flowchart PDF and image can be found in the "Project flow charts" file uploaded in the repository.
 
