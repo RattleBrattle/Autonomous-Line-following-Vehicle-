@@ -29,7 +29,7 @@ This project implements an autonomous line-following robot using an ATmega32A mi
 ### Software Components
 
 - **MCAL (Microcontroller Abstraction Layer)**
-  - GPIO (General Purpose Input/Output)
+  - DIO (General Purpose Input/Output)
   - Timer (Timer0, Timer1)
   - ADC (Analog to Digital Converter)
   - USART (Universal Synchronous/Asynchronous Receiver/Transmitter)
@@ -72,15 +72,11 @@ This project implements an autonomous line-following robot using an ATmega32A mi
 3. **Obstacle Detection and Avoidance**:
    - Uses the HC-SR04 sensor to measure distances to obstacles.
    - Adjusts the servo motor to scan the area.
-   - Microcontroller sends the servo one of 3 functions:
-     1) Turn left (to scan the left direction of the ultrasonic sensor)
-     2) Turn right (to scan the right direction of the ultrasonic sensor)
-     3) Survey the area from left to right (scan surrounding area)
-   - Depending on the ultrasonic response, the MCU takes the appropriate action to avoid the obstacle in whichever direction.
+   - When an obstacle is detected in range (<20CM), the MCU writes to LCD screen a warning and a Buzzer alarm sounds off.
 
 4. **LCD Display**:
    - Displays the sensor readings and robot status on the LCD screen for monitoring. !!!(For debugging only)!!!
-   - Displays current direction the vehicle is going, Obstacles detected when ultrasonic distance is <30CM, and errors when they occur. 
+   - Displays current direction the vehicle is going, Obstacles detected when ultrasonic distance is <20CM, and errors when they occur. 
 
 ### Usage
 
