@@ -24,7 +24,9 @@ This project implements an autonomous line-following robot using an ATmega32A mi
 - L293D Motor Driver ICs (2 units)
 - DC Motors (4 units)
 - LCD Display (16x2)
-- Resistors, Capacitors, and other passive components 
+- Resistors, Capacitors, and other passive components
+
+![](https://github.com/RattleBrattle/Autonomous-Line-following-Vehicle-/blob/main/Components%20list.jpg?raw=true)
 
 ### Software Components
 
