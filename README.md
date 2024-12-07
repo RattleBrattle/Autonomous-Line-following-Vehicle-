@@ -105,8 +105,14 @@ This project implements an autonomous line-following robot using an ATmega32A mi
 - `AUTOV_PROG.c`: Implementation file with the main logic for the autonomous vehicle functions.
 - `TCRT_SENSOR.c`, `HCSR04_SENSOR.c`, `SERVO_MOTOR.c`: Driver files for the sensors and servo motor.
 
-### Final project pictures
+### Final project picture - FRONT
 ![Finished form - Front](https://github.com/RattleBrattle/Autonomous-Line-following-Vehicle-/blob/main/Final%20Shape%20-%20Front.jpg?raw=true)
+
+### Final project picture - TOP
+![Finished form - Top](https://github.com/RattleBrattle/Autonomous-Line-following-Vehicle-/blob/main/Finished%20Form%20-%20Top.jpg?raw=true)
+
+### Final project picture - SIDE
+![Finsihed form - Side](https://github.com/RattleBrattle/Autonomous-Line-following-Vehicle-/blob/main/Finished%20Form%20-%20Side.jpg?raw=true)
 
 ### Contributing
 
