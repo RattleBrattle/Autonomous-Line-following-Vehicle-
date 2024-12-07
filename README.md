@@ -116,7 +116,7 @@ This project implements an autonomous line-following robot using an ATmega32A mi
 
 ### Contributing
 
-Tell me your thoughts and ideas on how to make this project even better or faster!
+Tell me your thoughts and ideas on how to make this project even better or faster.
 
 You can contact me by email at: baselmohamed802@gmail.com.
 
