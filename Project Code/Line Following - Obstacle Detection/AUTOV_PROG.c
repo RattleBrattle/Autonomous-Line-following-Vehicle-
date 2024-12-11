@@ -113,10 +113,10 @@ void L293D_init(void) {
 void Motors_forward(u8 copy_u8Speed) {
 	// Starting PWM signal from Timer 0 to EN pin of L293D board (speed condition 0-100)
 	if (copy_u8Speed >= 0 || copy_u8Speed <= 100) {
-		TMR0_generatePWM(copy_u8Speed, TMR0_PWM_NON_INVERT, TMR0_PRESCALER_8);
+		TMR0_generatePWM(copy_u8Speed, TMR0_PWM_NON_INVERT, TMR0_PRESCALER_1);
 	}
 	else {
-		TMR0_generatePWM(HALT, TMR0_PWM_NON_INVERT, TMR0_PRESCALER_8);  // Error 1 (Not receiving correct speed)
+		TMR0_generatePWM(HALT, TMR0_PWM_NON_INVERT, TMR0_PRESCALER_1);  // Error 1 (Not receiving correct speed)
 	}
 	
 	// Motor control FORWARD
@@ -133,10 +133,10 @@ void Motors_forward(u8 copy_u8Speed) {
 void Motors_reverse(u8 copy_u8Speed) {
 	// Starting PWM signal from Timer 0 to EN pin of L293D board (speed condition 0-100)
 	if (copy_u8Speed >= 0 || copy_u8Speed <= 100) {
-		TMR0_generatePWM(copy_u8Speed, TMR0_PWM_NON_INVERT, TMR0_PRESCALER_8);
+		TMR0_generatePWM(copy_u8Speed, TMR0_PWM_NON_INVERT, TMR0_PRESCALER_1);
 	}
 	else {
-		TMR0_generatePWM(HALT, TMR0_PWM_NON_INVERT, TMR0_PRESCALER_8);  // Error 1 (Not receiving correct speed)
+		TMR0_generatePWM(HALT, TMR0_PWM_NON_INVERT, TMR0_PRESCALER_1);  // Error 1 (Not receiving correct speed)
 	}
 	
 	// Motor control Reverse direction
@@ -153,10 +153,10 @@ void Motors_reverse(u8 copy_u8Speed) {
 void Motors_left(u8 copy_u8Speed) {
 	// Starting PWM signal from Timer 0 to EN pin of L293D board (speed condition 0-100)
 	if (copy_u8Speed >= 0 || copy_u8Speed <= 100) {
-		TMR0_generatePWM(copy_u8Speed, TMR0_PWM_NON_INVERT, TMR0_PRESCALER_8);
+		TMR0_generatePWM(copy_u8Speed, TMR0_PWM_NON_INVERT, TMR0_PRESCALER_1);
 	}
 	else {
-		TMR0_generatePWM(HALT, TMR0_PWM_NON_INVERT, TMR0_PRESCALER_8);  // Error 1 (Not receiving correct speed)
+		TMR0_generatePWM(HALT, TMR0_PWM_NON_INVERT, TMR0_PRESCALER_1);  // Error 1 (Not receiving correct speed)
 	}
 	// Turn on back right motor to steer left (Motor 3)
 	DIO_setPinVal(IN1_MOTOR3_PORT, IN1_MOTOR3_PIN, DIO_PIN_OUTPUT_LOW);
@@ -176,10 +176,10 @@ void Motors_left(u8 copy_u8Speed) {
 void Motors_right(u8 copy_u8Speed) {
 	// Starting PWM signal from Timer 0 to EN pin of L293D board (speed condition 0-100)
 	if (copy_u8Speed >= 0 || copy_u8Speed <= 100) {
-		TMR0_generatePWM(copy_u8Speed, TMR0_PWM_NON_INVERT, TMR0_PRESCALER_8);
+		TMR0_generatePWM(copy_u8Speed, TMR0_PWM_NON_INVERT, TMR0_PRESCALER_1);
 	}
 	else {
-		TMR0_generatePWM(HALT, TMR0_PWM_NON_INVERT, TMR0_PRESCALER_8);  // Error 1 (Not receiving correct speed)
+		TMR0_generatePWM(HALT, TMR0_PWM_NON_INVERT, TMR0_PRESCALER_1);  // Error 1 (Not receiving correct speed)
 	}
 	
 	// Turn on back left motor to steer right (Motor 1)
@@ -198,6 +198,9 @@ void Motors_right(u8 copy_u8Speed) {
 }
 
 void Motors_off(void) {
+	// Turn off CLK to timer 0 peripheral
+	TMR0_stop();
+	
 	// Turn off Left side Motors
 	DIO_setPinVal(IN1_MOTOR1_PORT, IN1_MOTOR1_PIN, DIO_PIN_OUTPUT_LOW);
 	DIO_setPinVal(IN2_MOTOR1_PORT, IN2_MOTOR1_PIN, DIO_PIN_OUTPUT_LOW);
@@ -362,7 +365,7 @@ void AUTOV_init(void) {
 	// Initializing Servo motor
 	SG90_init();
 	// Start ADC peripheral
-	ADC_init(ADC_REFERENCE_AVCC);
+	/*ADC_init(ADC_REFERENCE_AVCC);*/
 	// Initializing all pins of the Infrared tracking sensors
 	TCRT_init();
 	// Global interrupts
@@ -370,7 +373,7 @@ void AUTOV_init(void) {
 	// LCD initialize
 	LCD_init();
 	
-	/*// Loading start
+	// Loading start robot
 	LCD_clear();
 	LCD_displayString((u8*) "Starting.");
 	_delay_ms(20);
@@ -380,10 +383,10 @@ void AUTOV_init(void) {
 	_delay_ms(20);
 	LCD_displayString((u8*)".");
 	_delay_ms(20);
-	LCD_displayString((u8*)".!");*/
+	LCD_displayString((u8*)".!");
 	
 	// Initialize Buzzer connection
-	/*DIO_setPinDirection(BUZZER_PORT, BUZZER_PIN, DIO_PIN_OUTPUT);*/
+	DIO_setPinDirection(BUZZER_PORT, BUZZER_PIN, DIO_PIN_OUTPUT);
 }
 
 // This is the second main function of the Autonomous vehicle where if an obstacle is detected
@@ -398,7 +401,7 @@ void AUTOV_obstacleAvoidance(void) {
 	LCD_displayString((u8*) "Obstacle is");
 	LCD_moveCursor(1, 0);
 	LCD_displayString((u8*) "detected.");
-	_delay_ms(250);
+	_delay_ms(450);
 	LCD_clear();
 	LCD_displayString((u8*) "Please remove");
 	LCD_moveCursor(1, 0);
@@ -407,9 +410,6 @@ void AUTOV_obstacleAvoidance(void) {
 	
 	// Sound off buzzer as an alarm sound
 	AUTOV_buzzerAlarm();
-	
-	// center servo head 
-	SERVO_centerHead();
 }
 
 // Main line following function, this function simply follows the line on ground by reading
@@ -418,7 +418,7 @@ void AUTOV_obstacleAvoidance(void) {
 void AUTOV_lineFollowing(void) {
 	// Sensor variables
 	u8 local_u8CenterState = 0, local_u8LeftState = 0, local_u8RightState = 0;
-	u16 local_u16CenterSensAnalog = 0, local_u16RightSensAnalog = 0, local_u16LeftSensAnalog = 0;
+	/*u16 local_u16CenterSensAnalog = 0, local_u16RightSensAnalog = 0, local_u16LeftSensAnalog = 0;*/
 	
 	// Error Variable
 	u8 local_u8ErrVar = 0;
@@ -429,9 +429,9 @@ void AUTOV_lineFollowing(void) {
 	TCRT_getDigitalVal(LEFT_SENSOR, &local_u8LeftState);
 	
 	// Checking for TCRT analog readings
-	TCRT_getAnalog(RIGHT_SENSOR, &local_u16RightSensAnalog);
+	/*TCRT_getAnalog(RIGHT_SENSOR, &local_u16RightSensAnalog);
 	TCRT_getAnalog(CENTER_SENSOR, &local_u16CenterSensAnalog);
-	TCRT_getAnalog(LEFT_SENSOR, &local_u16LeftSensAnalog);
+	TCRT_getAnalog(LEFT_SENSOR, &local_u16LeftSensAnalog);*/
 	
 	/* Debug for TCRT sensors reading(s) */
 	/*LCD_displayString((u8*) "A Value: ");
@@ -452,13 +452,12 @@ void AUTOV_lineFollowing(void) {
 	
 	// Main Line following conditions
 	if (local_u8RightState == RIGHT_LOW && local_u8LeftState == LEFT_LOW) {
-		Motors_forward(MEDIUM);
-		LCD_clear();
+		Motors_forward(FULL_SPEED);
+		LCD_clear(); 
 		LCD_displayString((u8*) "Direction: ");
 		LCD_moveCursor(1, 0);
 		LCD_displayString((u8*) "Forward ");
 		LCD_createAndDisplayChar(0, arrowUP, 1, 9);
-		_delay_ms(10);
 	}
 	else if (local_u8RightState == RIGHT_HIGH && local_u8LeftState == LEFT_LOW) {
 		Motors_right(FULL_SPEED);
@@ -467,7 +466,6 @@ void AUTOV_lineFollowing(void) {
 		LCD_moveCursor(1, 0);
 		LCD_displayString((u8*) "Right ");
 		LCD_createAndDisplayChar(1, arrowRIGHT, 1, 7);
-		_delay_ms(10);
 	}
 	else if (local_u8RightState == RIGHT_LOW && local_u8LeftState == LEFT_HIGH) {
 		Motors_left(FULL_SPEED);
@@ -476,15 +474,14 @@ void AUTOV_lineFollowing(void) {
 		LCD_moveCursor(1, 0);
 		LCD_displayString((u8*) "Left ");
 		LCD_createAndDisplayChar(1, arrowLEFT, 1, 6);
-		_delay_ms(10);
 	}
 	else {
 		local_u8ErrVar = 1; // Error in reading sensor values
+		Motors_off();
 		LCD_clear();
 		LCD_displayString((u8*) "Error type 1");
 		LCD_moveCursor(1, 0);
 		LCD_displayString((u8*) "Reading sensors");
-		_delay_ms(450);
 		}
 }
 

@@ -23,7 +23,7 @@
 */
 
 #define FULL_SPEED 100
-#define QUICK 75
+#define QUICK 92
 #define MEDIUM 50
 #define SLOW_DOWN 25
 #define HALT 0
@@ -58,9 +58,9 @@
 */
 
 // Samples to read
-#define HCSR04_SAMPLES 3
+#define HCSR04_SAMPLES 1
 // minimum distance of an obstacle
-#define HCSR04_MIN_DISTANCE 30
+#define HCSR04_MIN_DISTANCE 12
 
 /* Function Headers */
 
