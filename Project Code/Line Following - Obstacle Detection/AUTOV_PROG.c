@@ -4,11 +4,11 @@
  * Created: 11/22/2024 9:48:22 AM
  *
  *  Author: Basel Mohamed Mostafa Sayed
- *  Email: baselmohamed802@gmail.cosm
+ *  Email: baselmohamed802@gmail.com
  *  LinkedIn: www.linkedin.com/in/basel-sayed-b11534243
  *
  *  Description: This file contains all the source code for the Autonomous vehicle project
- *  Using ATmega32A.
+ *  Line-Follower robot project Using ATmega32A.
  *  
  */ 
 #define F_CPU 16000000UL

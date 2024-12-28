@@ -1,8 +1,16 @@
 /*
- * Autonomous Vehicle.c
+ * AUTOV_CONFIG.h
  *
- * Created: 11/22/2024 9:47:22 AM
- * Author : Basel Mohamed Mostafa Sayed
+ * Created: 11/22/2024 9:48:22 AM
+ *
+ *  Author: Basel Mohamed Mostafa Sayed
+ *  Email: baselmohamed802@gmail.com
+ *  LinkedIn: www.linkedin.com/in/basel-sayed-b11534243
+ *
+ *  Description: This File is the main.c code for running the Line-Follower robot
+ *  Application.
+ *  
+ *  Use of this code is allowed however you see fit.
  */ 
 
 #define F_CPU 16000000UL

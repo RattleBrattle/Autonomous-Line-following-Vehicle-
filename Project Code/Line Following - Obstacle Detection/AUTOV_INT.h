@@ -8,7 +8,7 @@
  *  LinkedIn: www.linkedin.com/in/basel-sayed-b11534243
  *
  *  Description: This file contains all the Function prototypes and 
- *  MACROS for the Autonomous vehicle project using the HC-SR04 and TCRT-5000 module board.
+ *  MACROS for the Autonomous vehicle Line-Follower project using the HC-SR04 and TCRT-5000 module board.
  *  
  */ 
 
